@@ -1,0 +1,140 @@
+{% extends 'main/base.html' %}
+{% block title %}{{ about_page.general_title }}{% endblock %}
+  {% block body %}
+    <div style="background-image: url({{ about_page.img.url }});" class="about-main-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="content">
+              <div style="background: url({{ about_page.img.url }}) no-repeat center center fixed;" class="blur-bg"></div>
+              <h4>{{ about_page.title }}</h4>
+              <div class="line-dec"></div>
+              <h2>{{ about_page.subtitle }}</h2>
+              <p>{{ about_page.text }}</p>
+              <div class="main-button">
+                <a href="{% url 'deals' %}">{{ about_page.btn_name }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cities-town">
+      <div class="container">
+        <div class="row">
+          <div class="slider-content">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>{{ about_page.title2 }} <em>{{ about_page.title2_colored }}</em></h2>
+              </div>
+              <div class="col-lg-12">
+                <div class="owl-cites-town owl-carousel">
+                  {% for i in about_content %}
+                    <div class="item">
+                      <div class="thumb">
+                        <img src="{{ i.img.url }}" alt="">
+                        <h4>{{ i.name }}</h4>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="weekly-offers">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <div class="section-heading text-center">
+              <h2>{{ about_pricing.title }}</h2>
+              <p>{{ about_pricing.text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="owl-weekly-offers owl-carousel">
+              {% for i in about_pricing_content %}
+                <div class="item">
+                  <div class="thumb">
+                    <img src="{{ i.img.url }}" alt="">
+                    <div class="text">
+                      <h4>{{ i.title }}<br><span><i class="fa fa-users"></i> {{ i.people }}</span></h4>
+                      <h6>${{ i.price }}<br><span>/{{ i.count }}</span></h6>
+                      <div class="line-dec"></div>
+                      <ul>
+                        <li>{{ about_pricing.offer }}:</li>
+                        <li><i class="fa fa-taxi"></i> {{ i.offer1 }}</li>
+                        <li><i class="fa fa-plane"></i> {{ i.offer2 }}</li>
+                        <li><i class="fa fa-building"></i> {{ i.offer3 }}</li>
+                      </ul>
+                      <div class="main-button">
+                        <a href="{% url 'reservation' %}">{{ about_pricing.btn_name }}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="more-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 align-self-center">
+            <div class="left-image">
+              <img src="{{ about_info.img.url }}" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="section-heading">
+              <h2>{{ about_info.title }}</h2>
+              <p>{{ about_info.text1 }}</p>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="info-item">
+                  <h4>{{ about_info.info1 }}</h4>
+                  <span>{{ about_info.subtitle1 }}</span>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="info-item">
+                  <h4>{{ about_info.info2 }}</h4>
+                  <span>{{ about_info.subtitle2 }}</span>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="info-item">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <h4>{{ about_info.info3 }}</h4>
+                      <span>{{ about_info.subtitle3 }}</span>
+                    </div>
+                    <div class="col-lg-6">
+                      <h4>{{ about_info.info4 }}</h4>
+                      <span>{{ about_info.subtitle4 }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>{{ about_info.text2 }}</p>
+            <div class="main-button">
+              <a href="{% url 'deals' %}">{{ about_info.btn_name }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include 'inc/_reservation_offer.html' %}
+  {% endblock %}
